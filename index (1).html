@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mallory Fries — Nursing Portfolio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,500;8..60,600;8..60,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#F7F5F0;
+    --paper-dim:#EFEBE2;
+    --ink:#1C2B2B;
+    --sage:#6B7A70;
+    --clay:#B5651D;
+    --white:#FFFFFF;
+    --line: rgba(28,43,43,0.14);
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--ink);
+    font-family:'Inter',sans-serif;
+    font-size:16px;
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3,.serif{ font-family:'Source Serif 4', serif; }
+  a{ color:inherit; }
+  .wrap{ max-width:880px; margin:0 auto; padding:0 28px; }
+
+  .skip-link{
+    position:absolute; left:-999px; top:0; background:var(--ink); color:var(--paper);
+    padding:10px 16px; z-index:100;
+  }
+  .skip-link:focus{ left:12px; top:12px; }
+
+  header{
+    position:sticky; top:0; z-index:20;
+    background:rgba(247,245,240,0.92);
+    backdrop-filter:blur(6px);
+    border-bottom:1px solid var(--line);
+  }
+  nav.wrap{ display:flex; align-items:center; justify-content:space-between; padding:16px 28px; }
+  .brand{ font-family:'Source Serif 4',serif; font-weight:600; font-size:1.05rem; }
+  .navlinks{ display:flex; gap:26px; list-style:none; margin:0; padding:0; }
+  .navlinks a{
+    text-decoration:none; font-size:0.85rem; font-weight:500; color:var(--ink);
+    letter-spacing:0.02em; text-transform:uppercase; opacity:0.72;
+    border-bottom:1px solid transparent; padding-bottom:3px;
+    transition:opacity .15s ease, border-color .15s ease;
+  }
+  .navlinks a:hover, .navlinks a:focus-visible{ opacity:1; border-color:var(--clay); }
+
+  /* Hero / overview */
+  .hero{ padding:72px 0 40px; }
+  .eyebrow{
+    font-size:0.8rem; text-transform:uppercase; letter-spacing:0.14em;
+    color:var(--sage); font-weight:600; margin:0 0 18px;
+  }
+  .hero h1{
+    font-size:clamp(2.1rem, 4.6vw, 3rem);
+    line-height:1.1; font-weight:600; margin:0 0 20px; max-width:16ch;
+  }
+  .hero p.lede{ font-size:1.08rem; color:#3a4747; max-width:60ch; margin:0 0 20px; }
+
+  .vital{ width:100%; height:56px; margin-top:30px; display:block; }
+  .vital path{
+    fill:none; stroke:var(--clay); stroke-width:2; stroke-linecap:round; stroke-linejoin:round;
+    stroke-dasharray:900; stroke-dashoffset:900;
+    animation:draw 2.2s ease forwards 0.2s;
+  }
+  @keyframes draw{ to{ stroke-dashoffset:0; } }
+  @media (prefers-reduced-motion:reduce){ .vital path{ animation:none; stroke-dashoffset:0; } }
+
+  section{ padding:44px 0; border-top:1px solid var(--line); }
+  .section-head{ display:flex; align-items:baseline; justify-content:space-between; margin-bottom:30px; flex-wrap:wrap; gap:10px; }
+  .section-head h2{ font-size:1.5rem; font-weight:600; margin:0; }
+  .section-num{ font-size:0.8rem; color:var(--sage); letter-spacing:0.08em; text-transform:uppercase; }
+
+  /* Quick facts strip */
+  .facts{ display:flex; flex-wrap:wrap; gap:12px; margin-top:8px; }
+  .fact{
+    font-size:0.85rem; padding:9px 16px; border:1px solid var(--line); border-radius:20px;
+    background:var(--white);
+  }
+
+  /* Projects */
+  .proj-grid{ display:grid; grid-template-columns:repeat(3, 1fr); gap:26px; }
+  .proj-card{
+    background:var(--white); border:1px solid var(--line); border-radius:4px;
+    padding:26px 26px 24px; display:flex; flex-direction:column;
+  }
+  .proj-kicker{ font-size:0.74rem; text-transform:uppercase; letter-spacing:0.08em; color:var(--clay); font-weight:700; margin-bottom:10px; }
+  .proj-card h3{ margin:0 0 10px; font-size:1.1rem; font-weight:600; }
+  .proj-card p{ font-size:0.92rem; color:#3a4747; margin:0 0 18px; flex-grow:1; }
+  .proj-card .proj-link{
+    align-self:flex-start; font-size:0.85rem; font-weight:600; text-decoration:none;
+    color:var(--ink); border-bottom:1px solid var(--clay); padding-bottom:2px;
+  }
+  .proj-card .proj-link:hover{ color:var(--clay); }
+  .video-embed{
+    position:relative; width:100%; padding-top:177.7%; border-radius:3px; overflow:hidden;
+    margin-bottom:16px; background:var(--paper-dim);
+  }
+  .video-embed iframe, .video-embed video{ position:absolute; inset:0; width:100%; height:100%; border:0; object-fit:cover; }
+  @media (max-width:960px){ .proj-grid{ grid-template-columns:1fr 1fr; } }
+  @media (max-width:720px){ .proj-grid{ grid-template-columns:1fr; } }
+
+  footer{
+    padding:30px 0 46px; text-align:center; font-size:0.85rem; color:var(--sage);
+    display:flex; gap:18px; justify-content:center; flex-wrap:wrap;
+  }
+  footer a{ text-decoration:none; font-weight:600; color:var(--ink); border-bottom:1px solid transparent; }
+  footer a:hover{ border-color:var(--clay); color:var(--clay); }
+
+  :focus-visible{ outline:2px solid var(--clay); outline-offset:2px; }
+</style>
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+
+<header>
+  <nav class="wrap" aria-label="Primary">
+    <span class="brand">Mallory Fries</span>
+    <ul class="navlinks">
+      <li><a href="#overview">Overview</a></li>
+      <li><a href="#projects">Projects</a></li>
+    </ul>
+  </nav>
+</header>
+
+<main id="main">
+  <section id="overview" class="hero wrap" style="border-top:none;">
+    <p class="eyebrow">BSN Candidate · Conway School of Nursing, CUA</p>
+    <h1>Nursing care with a public health foundation.</h1>
+    <p class="lede">I want to pursue bedside nursing after several years in hospital quality and patient safety. I'm completing an accelerated BSN, bringing a systems-level view of care quality to the bedside.</p>
+    <div class="facts">
+      <span class="fact">BS, Public Health — George Washington University</span>
+      <span class="fact">Prior role: Program Associate, The Leapfrog Group</span>
+      <span class="fact">BLS / CPR Certified</span>
+    </div>
+    <svg class="vital" viewBox="0 0 800 56" preserveAspectRatio="none" role="img" aria-label="Decorative heartbeat line">
+      <path d="M0 28 L160 28 L185 28 L200 6 L220 50 L240 28 L260 28 L640 28 L660 28 L680 10 L698 46 L716 28 L800 28" />
+    </svg>
+  </section>
+
+  <section id="projects" class="wrap">
+    <div class="section-head">
+      <h2>Projects</h2>
+      <span class="section-num">01</span>
+    </div>
+    <div class="proj-grid">
+      <div class="proj-card">
+        <div class="proj-kicker">Patient Education</div>
+        <h3>Healthy Nutrition for Mom and Baby</h3>
+        <p>A patient-facing pamphlet on nutrition across pregnancy, postpartum, and breastfeeding — covering key nutrients and targets, foods to avoid, feeding cues, and safe formula prep. Researched and designed independently, drawing on ACOG, AAP, CDC, and FDA guidance alongside course texts.</p>
+        <a class="proj-link" href="assets/maternal-infant-nutrition.pdf" target="_blank" rel="noopener">View PDF →</a>
+      </div>
+      <div class="proj-card">
+        <div class="proj-kicker">Public Health Writing</div>
+        <h3>Reducing the Rate of Infant Deaths</h3>
+        <p>A reflection on Healthy People 2030's infant mortality objective (MICH-02), examining national trends, the role of social determinants of health, and the persistent racial disparities in outcomes.</p>
+        <a class="proj-link" href="assets/reducing-infant-deaths.pdf" target="_blank" rel="noopener">View PDF →</a>
+      </div>
+      <div class="proj-card">
+        <div class="proj-kicker">Video PSA</div>
+        <div class="video-embed">
+          <video controls preload="metadata" playsinline title="Infant Sleep Safety PSA">
+            <source src="assets/infant-sleep-safety-psa.mp4" type="video/mp4">
+            Your browser doesn't support embedded video. <a href="assets/infant-sleep-safety-psa.mp4">Download the video</a> instead.
+          </video>
+        </div>
+        <h3>Infant Sleep Safety PSA</h3>
+        <p>A short public health awareness video on infant safe sleep practices.</p>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <a href="mailto:mallorykfries@gmail.com">mallorykfries@gmail.com</a>
+  <a href="https://linkedin.com/in/malloryfries" target="_blank" rel="noopener">LinkedIn</a>
+</footer>
+
+</body>
+</html>
